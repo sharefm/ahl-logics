@@ -1,5 +1,7 @@
 
-resource "kubernetes_namespace" "ahl-db-namespace" {
+
+
+resource "kubernetes_namespace" "ahl-db" {
   metadata {    
     labels = {
       app = "ahl-db"
@@ -12,11 +14,13 @@ resource "kubernetes_namespace" "ahl-db-namespace" {
 resource "kubernetes_deployment" "ahl-db-deployment" {
   metadata {
     name = "ahl-db-deployment"
-    namespace = kubernetes_namespace.ahl-db-namespace.metadata.0.name
+    namespace = kubernetes_namespace.ahl-db.metadata.0.name
     labels = {
       app = "ahl-db"
     }
   }
+
+  
 
   spec {
     replicas = 1
@@ -35,6 +39,10 @@ resource "kubernetes_deployment" "ahl-db-deployment" {
         container {
           image = "public.ecr.aws/ubuntu/mysql:8.0-22.04_edge"
           name  = "mysql"
+          env {
+            name = "MYSQL_ROOT_PASSWORD"
+            value = var.MYSQL_ROOT_PASSWORD
+          }
         }
       }
     }
