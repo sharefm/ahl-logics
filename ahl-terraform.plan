@@ -35,19 +35,25 @@ Terraform will perform the following actions:
 
   # aws_eks_cluster.ahl-cluster will be created
   + resource "aws_eks_cluster" "ahl-cluster" {
-      + arn                   = (known after apply)
-      + certificate_authority = (known after apply)
-      + cluster_id            = (known after apply)
-      + created_at            = (known after apply)
-      + endpoint              = (known after apply)
-      + id                    = (known after apply)
-      + identity              = (known after apply)
-      + name                  = "ahl-cluster"
-      + platform_version      = (known after apply)
-      + role_arn              = (known after apply)
-      + status                = (known after apply)
-      + tags_all              = (known after apply)
-      + version               = (known after apply)
+      + arn                       = (known after apply)
+      + certificate_authority     = (known after apply)
+      + cluster_id                = (known after apply)
+      + created_at                = (known after apply)
+      + enabled_cluster_log_types = [
+          + "api",
+          + "audit",
+          + "authenticator",
+          + "scheduler",
+        ]
+      + endpoint                  = (known after apply)
+      + id                        = (known after apply)
+      + identity                  = (known after apply)
+      + name                      = "ahl-cluster"
+      + platform_version          = (known after apply)
+      + role_arn                  = (known after apply)
+      + status                    = (known after apply)
+      + tags_all                  = (known after apply)
+      + version                   = (known after apply)
 
       + vpc_config {
           + cluster_security_group_id = (known after apply)
