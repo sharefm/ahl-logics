@@ -42,15 +42,14 @@ resource "kubernetes_deployment" "ahl-db-deployment" {
 }
 
 
-resource "kubernetes_service" "ahl-app" {
+resource "kubernetes_service" "ahl-db" {
   metadata {
-    name = "ahl-app"
+    name = "ahl-db"
   }
   spec {
     selector = {
-      App = kubernetes_deployment.ahl-app-deployment.spec.0.template.0.metadata[0].labels.app
+      App = kubernetes_deployment.ahl-db-deployment.spec.0.template.0.metadata[0].labels.app
     }
-    #session_affinity = "ClientIP"
     port {
       port        = 3306
       target_port = 3306
