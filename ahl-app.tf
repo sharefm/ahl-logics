@@ -2,7 +2,7 @@
 
 
 resource "kubernetes_namespace" "ahl-app" {
-  metadata {    
+  metadata {
     labels = {
       app = "ahl-app"
     }
@@ -13,7 +13,7 @@ resource "kubernetes_namespace" "ahl-app" {
 
 resource "kubernetes_deployment" "ahl-app-deployment" {
   metadata {
-    name = "ahl-app-deployment"
+    name      = "ahl-app-deployment"
     namespace = kubernetes_namespace.ahl-app.metadata.0.name
     labels = {
       app = "ahl-app"

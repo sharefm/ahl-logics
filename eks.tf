@@ -23,9 +23,9 @@ resource "aws_iam_role_policy_attachment" "ahl-cluster-AmazonEKSClusterPolicy" {
 }
 
 resource "aws_eks_cluster" "ahl-cluster" {
-  name     = "ahl-cluster"
-  role_arn = aws_iam_role.ahl-cluster.arn
-  enabled_cluster_log_types = ["audit", "api", "authenticator","scheduler"]
+  name                      = "ahl-cluster"
+  role_arn                  = aws_iam_role.ahl-cluster.arn
+  enabled_cluster_log_types = ["audit", "api", "authenticator", "scheduler"]
 
   vpc_config {
     subnet_ids = [
@@ -36,5 +36,5 @@ resource "aws_eks_cluster" "ahl-cluster" {
     ]
   }
 
-  depends_on = [aws_iam_role_policy_attachment  .ahl-cluster-AmazonEKSClusterPolicy]
+  depends_on = [aws_iam_role_policy_attachment.ahl-cluster-AmazonEKSClusterPolicy]
 }
